@@ -1,11 +1,13 @@
 import os
+import string
 
+max = 100
+alphabet = string.ascii_lowercase  # Create string of abc...xyz
 
-max = 1000
-for j in range(max):
-    if not os.path.exists("/tmp/tmp"):
-        os.mkdir("/tmp/tmp", mode=755)
+if not os.path.exists("/tmp/tmp"):
+    os.mkdir("/tmp/tmp", mode=755)
 
-    # create subdirectory
-    f = open("/tmp/tmp/tmp" + str(j), "w")
-    f.close()
+for j in alphabet:
+    for num in range(max):
+        f = open("/tmp/tmp/tmp" + str(j) + str(num), "w")
+        f.close()
