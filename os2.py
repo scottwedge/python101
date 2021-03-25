@@ -25,7 +25,7 @@ for j in list_of_functions:
 print("functions with 'cwd' in them are: ", list_of_cwd)
 
 f = open(FILE, "w")
-f.write("List of functions in 'os' module:" + NEWLINE)
-f.write(str(list_of_functions) + NEWLINE)
-f.write("functions with 'cwd' in them are: " + NEWLINE)
-f.write(str(list_of_cwd) + NEWLINE)
+f.writelines("List of functions in 'os' module:" + NEWLINE)
+f.writelines(str(list_of_functions) + NEWLINE)
+f.writelines("functions with 'cwd' in them are: " + NEWLINE)
+f.writelines(str(list_of_cwd) + NEWLINE)
