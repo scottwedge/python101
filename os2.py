@@ -31,3 +31,25 @@ f.writelines(str(list_of_functions) + NEWLINE)
 f.writelines(NEWLINE)
 f.writelines("Functions with 'cwd' in them are: " + NEWLINE)
 f.writelines(str(list_of_cwd) + NEWLINE)
+
+# Find and display current working directory
+cwd = os.getcwd()
+
+# Output results as one line
+print()  # blank line
+print("CWD is", cwd)
+f.writelines(NEWLINE)
+f.writelines("CWD is {}".format(cwd + NEWLINE))
+
+# list directory and file line by line
+ll = cwd.split("/")
+for j in ll:
+    print(j)
+    f.write(j + NEWLINE)
+
+# Join the directories with "/".join(list)
+statement = "/".join(ll)
+print()
+print(statement)
+f.write(NEWLINE)
+f.write(str(ll) + NEWLINE) 
