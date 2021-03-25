@@ -11,5 +11,18 @@ import os
 # Constants
 FILE = "/tmp/cwd"
 
+list_of_functions = dir(os)
+
+print("List of functions in 'os' module:", list_of_functions)
+
+list_of_cwd = []
+
+for j in list_of_functions:
+    if "cwd" in j:
+        list_of_cwd.append(j)
+
+print("functions with 'cwd' in them are: ", list_of_cwd)
+
 f = open(FILE, "w")
-f.write("dir(os)")
+f.write("functions with 'cwd' in them are: ")
+f.write(str(list_of_cwd))
