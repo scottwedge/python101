@@ -33,10 +33,8 @@ for k in range(MAX_DIR_DEPTH):
     
     # Then append random number to directory name
     new_name = new_name + str(random.randint(0,MAX_NUM))
-    print("NEW DIR =", new_name)  # DEBUG
     
     full_path = os.path.join(old_name, new_name)
-#    os.makedirs(full_path, MODE)   # create new directory
     old_name = full_path
 
 print("NEW FULL PATH=", full_path)
