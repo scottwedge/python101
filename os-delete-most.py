@@ -9,40 +9,35 @@ import os
 
 
 # Constants
-BASE = "/tmp/tmp/tmp"
+BASE = "/tmp/tmp"
 
 # Move to starting directory (assumes it exists)
 os.chdir(BASE)
 
 # Verify at starting directory
-j = os.getcwd()
+start_dir = os.getcwd()
 
-if j == BASE:
-    print("Starting at BASE", j)
+if start_dir == BASE:
+    print("Starting at BASE", start_dir)
 else:
-    print("Problem .. not starting at BASE", j)
+    print("Problem .. not starting at BASE", start_dir)
 
 
-# Make a list of all absolute file paths in the directory
-# by searching each for subdirectories and files
-# Delete files from bottom of directory up
-# if the filename does not begin with "os-"
+base_list_of_file_or_dir = []  # initialize empty lists
 
-list_of_file_or_dir = []  # initialize empty lists
-list_to_remove = []
-list_to_keep = []
+still_deleting = True
 
-file_or_dir = os.listdir()
+if still_deleting:
+    base_list_of_file_or_dir = os.listdir()
+    if base_list_of_file_or_dir == []:  # Nothing left to delete
+        still_deleting = False
+    else:
+        for j in base_list_of_file_or_dir:
+            if os.path.isfile(j): # if is file then delete it
+                os.remove(j)
+                print("Just removed:", j)
+            elif os.path.isdir(j): # if directory then go to it
+                os.chdir(j)
+                print("Just changed to directory", j)
 
-for j in file_or_dir:
-    if os.path.isfile(j) and 'os-' not in j: # if is most files, delete it
-        #os.remove(j)
-        list_to_remove.append(j)
-    elif os.path.isfile(j) and 'os-' in j: # keep this file
-        list_to_keep.append(j)
-    elif os.path.isdir(j): # if directory then go to it
-        os.chdir(j)
-        p = os.cwd()
-
-print("List of files to remove: ", list_to_remove)
-
+print("DONE!")
