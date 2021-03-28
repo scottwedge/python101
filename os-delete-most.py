@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
-# Script to delete all files and directories unless they
-# contain a file that starts with 'os'
+# Script to delete all files and directories 
+# (update later to not delete a directory or subdirectory
+# if it contains a file that starts with a certain string)
 
 # Imports
 import os
 
 
 # Constants
-BASE = "/tmp/tmp"
+BASE = "/tmp/tmp/tmp"
 
 # Move to starting directory (assumes it exists)
 os.chdir(BASE)
