@@ -27,8 +27,10 @@ base_list_of_file_or_dir = []  # initialize empty lists
 
 still_deleting = True
 
-if still_deleting:
+while still_deleting:
+    print("Currently in directory: {}".format(os.getcwd()))   # DEBUG
     base_list_of_file_or_dir = os.listdir()
+    print("Contains: {}".format(base_list_of_file_or_dir))   # DEBUG
     if base_list_of_file_or_dir == []:  # Nothing left to delete
         still_deleting = False
     else:
