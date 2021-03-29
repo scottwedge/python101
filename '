@@ -45,13 +45,11 @@ for j in list(base_list_of_file_or_dir):
         else:   # other than file or directory
             pass
 
-        if list_of_file_or_dir == []:  # At lowest subdirectory, is empty
+        if list_of_file_or_dir == []:  # At lowest subdirectory
             if os.getcwd() == BASE:
                 still_deleting = False
             else:
                 os.chdir("..")   # move up one directory
-                contents = os.listdir()
-                os.rmdir(contents)
 
 print("All dir=", all_dir)
 print("DONE!")
