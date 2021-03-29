@@ -15,7 +15,7 @@ import string
 BASE = "/tmp/tmp"  # base directory
 MODE = 0x755
 MAX_NUM = 9999
-MAX_DIR_DEPTH = 100
+MAX_DIR_DEPTH = 3
 
 lower_alphabet = string.ascii_lowercase
 upper_alphabet = string.ascii_uppercase
