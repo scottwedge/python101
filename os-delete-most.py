@@ -7,6 +7,24 @@
 # Imports
 import os
 
+# Functions
+def del_file_or_cd(cwd):
+    os.chdir(cwd)
+    list_file_or_dir = os.listdir()  # get list of contents of directory
+
+    if list_file_or_dir == []:  # if directory empty
+        full_path = os.getcwd()
+        os.chdir("..") # move up one directory
+        if full_path == BASE:
+            pass
+        else:
+            os.remove(full_path)
+    for j in list_file_or_dir:
+        if os.path.isfile(j):
+            os.remove(j)    # delete file
+        elif os.path.isdir(j):
+            os.chdir(j)
+            del_file_or_cd(os.getcwd())  # call self
 
 # Constants
 BASE = "/tmp/tmp"
@@ -28,32 +46,22 @@ base_list_of_file_or_dir = os.listdir()   # initialize initial list of directory
 
 for j in list(base_list_of_file_or_dir):
 
-    still_deleting = True
-    
-    while still_deleting:
-        if os.path.isfile(j): # if is file then delete it
-            os.remove(j)
-            print("Just removed:", j)
-            still_deleting = False  # exit while loop
-        elif os.path.isdir(j): # if directory then go to it
-            os.chdir(j)
-            print("Just changed to directory", j)
-        else:   # other than file or directory
-            pass   # what case could this be??
+    if os.path.isfile(j): # if is file then delete it
+        os.remove(j)
+        print("Just removed:", j)
+        continue  # return to next item in list
+    elif os.path.isdir(j): # if directory then go to it
+        os.chdir(j)
+        print("Just changed to directory", j)
+    else:   # other than file or directory
+        pass   # what case could this be??
 
-        # Now in new subdirectory
-        print("Currently in directory: {}".format(os.getcwd()))   # DEBUG
-        list_of_file_or_dir = os.listdir()    # DEBUG
-        all_dir.append(list_of_file_or_dir)   # DEBUG
-        print("Contains: {}".format(list_of_file_or_dir))   # DEBUG
+    # Now in new subdirectory
+    print("Currently in directory: {}".format(os.getcwd()))   # DEBUG
+    list_of_file_or_dir = os.listdir()    # DEBUG
+    all_dir.append(list_of_file_or_dir)   # DEBUG
+    print("Contains: {}".format(list_of_file_or_dir))   # DEBUG
 
-#        if list_of_file_or_dir == []:  # At lowest subdirectory, is empty
-#            if os.getcwd() == BASE:
-#                still_deleting = False
-#            else:
-#                os.chdir("..")   # move up one directory
-#                contents = os.listdir()
-#                os.rmdir(contents)
 
 print("All dir=", all_dir)
 print("DONE!")
