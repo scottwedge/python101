@@ -17,11 +17,13 @@ def work_down(dir):     # work down to bottom-most directory or file
     for j in contents:
         if os.path.isfile(j):
             delete_file(j)   # delete all files in directory
+            print("Deleted file {} from {}".format(j, contents))
     contents = os.listdir()  # new listing of contents (only directories)
     for j in contents:
         if os.path.isdir(j):
-            os.chdir(os.getcwd() + "/" + j)
-   
+            new_dir = os.path.join(os.getcwd(), j)
+            work_down(new_dir)
+            
 
 def delete_file(f):   # delete file
     os.remove(f)
@@ -33,3 +35,5 @@ if os.path.exists(BASE) == False:    # Check that it exists
 else:
     os.chdir(BASE)
     work_down(BASE)
+
+print("End up at {}".format(os.getcwd()))   #DEBUG
