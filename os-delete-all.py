@@ -24,12 +24,17 @@ def work_down(dir):     # work down to bottom-most directory or file
             new_dir = os.path.join(os.getcwd(), j)
             work_down(new_dir)
             
+def work_up(dir):
+    os.chdir(dir)
+    if os.listdir() == []:  # if directory is empty then go up and delete directory
+        os.chdir("..")
+        os.removedirs(dir)
 
 def delete_file(f):   # delete file
     os.remove(f)
 
 
-# Start at BASE directory
+# Start at BASE directory and word down the subdirectories
 if os.path.exists(BASE) == False:    # Check that it exists
     print("Base directory {} does not exist!".format(BASE))
 else:
@@ -37,3 +42,8 @@ else:
     work_down(BASE)
 
 print("End up at {}".format(os.getcwd()))   #DEBUG
+
+# Now start working up the directory tree until get to the BASE
+# directory and delete empty directories along the way
+
+work_up(os.getcwd())
