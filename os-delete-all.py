@@ -35,16 +35,22 @@ def delete_file(f):   # delete file
     os.remove(f)
 
 
-# Start at BASE directory and word down the subdirectories
-if os.path.exists(BASE) == False:    # Check that it exists
-    print("Base directory {} does not exist!".format(BASE))
-else:
-    os.chdir(BASE)
-    work_down(BASE)
+def main():
+    # Start at BASE directory and word down the subdirectories
+    if os.path.exists(BASE) == False:    # Check that it exists
+        print("Base directory {} does not exist!".format(BASE))
+    else:
+        os.chdir(BASE)
+        work_down(BASE)
+    
+    print("End up at {}".format(os.getcwd()))   #DEBUG
+    
+    # Now start working up the directory tree until get to the BASE
+    # directory and delete empty directories along the way
+    
+    work_up(os.getcwd())
 
-print("End up at {}".format(os.getcwd()))   #DEBUG
 
-# Now start working up the directory tree until get to the BASE
-# directory and delete empty directories along the way
-
-work_up(os.getcwd())
+# Main code
+if __name__ == "__main__":
+    main()
