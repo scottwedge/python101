@@ -41,14 +41,16 @@ def main():
         print("Base directory {} does not exist!".format(BASE))
     else:
         os.chdir(BASE)
-        work_down(BASE)
+        list_dir = os.listdir()
+        for j in list_dir:
+            work_down(BASE)
     
-    print("End up at {}".format(os.getcwd()))   #DEBUG
+            print("End up at {}".format(os.getcwd()))   #DEBUG
     
-    # Now start working up the directory tree until get to the BASE
-    # directory and delete empty directories along the way
+            # Now start working up the directory tree until get to the BASE
+            # directory and delete empty directories along the way
     
-    work_up(os.getcwd())
+            work_up(os.getcwd())
 
 
 # Main code
