@@ -28,8 +28,11 @@ def work_up(dir):
     os.chdir(dir)
     if os.listdir() == []:  # if directory is empty then go up and delete directory
         os.chdir("..")
-        if os.getcwd() != BASE:
-            os.removedirs(dir)
+        work_up(os.getcwd())
+    elif os.getcwd() != BASE:
+        os.removedirs(dir)
+    else:    #
+        pass
 
 def delete_file(f):   # delete file
     os.remove(f)
