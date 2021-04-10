@@ -30,7 +30,7 @@ def work_up(dir):
         os.chdir("..")
         work_up(os.getcwd())
     elif os.getcwd() != BASE:   # directory is not empty
-        os.removedirs(dir)
+        os.removedirs(dir)    # so delete subdirectory
     else:    #
         pass
 
